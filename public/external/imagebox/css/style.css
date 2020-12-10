@@ -1,0 +1,13 @@
+/*
+css
+*/
+div.image-group img.img {
+  width: 500px;
+  height: 300px;
+  padding: 5px;
+}
+
+div.image-group img.img:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}

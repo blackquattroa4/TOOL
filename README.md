@@ -6,6 +6,15 @@ TOOL is hosted on internet, so whether you have just one office location or many
 
 ## Feature
 
+ - Order (Purchase/Sales) entry management
+ - Accounting (Payable/Receivable) entry management
+ - Expense entry/management
+ - Inventory management
+ - Document management
+ - Financial statement
+ - Email access
+ - possible integration with external eCommerce site
+
 ## Demo site
 
 [click here to demo site](https://demo.createmyorder.com)

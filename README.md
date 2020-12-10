@@ -4,6 +4,12 @@ TOOOL (Tracker Of Orders & Logistics) is a web-deliverable, cloud-based office i
 
 TOOL is hosted on internet, so whether you have just one office location or many branch locations, or even with sales/executives on the road all the time, everyone in your organization can access business information any time, any where.
 
+## Feature
+
+## Demo site
+
+[click here to demo site](https://demo.createmyorder.com)
+
 ## Installation
 
 Install this software as if you are installing any Laravel App.

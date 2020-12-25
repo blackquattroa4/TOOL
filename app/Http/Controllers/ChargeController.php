@@ -341,7 +341,7 @@ class ChargeController extends Controller
 				'quantity' => [ sprintf(env('APP_QUANTITY_FORMAT'), 0) ],
 				'description' => [ '' ],
 				'subtotal' => [ sprintf($monetaryFormat, 0) ],
-				'filename' => [ '' ],
+				'filename' => [ trans('tool.Browse file') ],
 				'fileurl' => [ '' ],
 			]
 		]);

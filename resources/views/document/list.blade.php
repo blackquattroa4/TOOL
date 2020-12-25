@@ -123,7 +123,7 @@
 			<td>{description}</td>
 			<td data-order="{create_date}">{create_date_display}</td>
 			<td>{search-key}</td>
-			<td>
+			<td style="width:110px">
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.Download') }}" onclick="window.location.href='/document/download/{id}';"><i class="fa fa-download" aria-hidden="true"></i></button>
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewDocumentInModal({id})"><i class="fa fa-eye" aria-hidden="true"></i></button>
 				<button data-condition="{can_update}" class='btn btn-info btn-xs' title="{{ trans('forms.Update') }}" onclick="updateDocumentInModal({id})"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>

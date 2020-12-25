@@ -8,10 +8,48 @@ function updateChargeSubtotal(index) {
   vueChargeModal.$forceUpdate();
 }
 
+function recognizeUpload(index) {
+  if (vueChargeModal.modal.ocr) {
+    let theForm = new FormData();
+    theForm.append('_token', vueChargeModal.modal.csrf);
+    theForm.append('the_file', $('#embeddedChargeModal input[id="upload-selector[' + index + ']"]')[0].files[0]);
+    $.ajax({
+      type : 'POST',
+      url : '/charge/recognize/ajax',
+      enctype : 'multipart/form-data',
+      data : theForm,
+      processData : false,
+      contentType : false,
+      cache : false,
+      // dataType: 'html',
+      beforeSend: function(data) {
+        $('.ajax-processing').removeClass('hidden');
+      },
+    }).done(function(data) {
+      // data is already an object, no need to parse it.
+      console.log(data);
+      if (data['success']) {
+        vueChargeModal.form.product[index] = data['account_id'];
+        vueChargeModal.form.incurdate[index] = data['incur_date'];
+        vueChargeModal.form.unitprice[index] = data['unit_price'];
+        vueChargeModal.form.quantity[index] = data['quantity'];
+        vueChargeModal.form.description[index] = data['description'];
+        vueChargeModal.form.subtotal[index] = (parseFloat(data['unit_price']) * parseFloat(data['quantity'])).toFixed(2);
+        vueChargeModal.$forceUpdate();
+      }
+    }).always(function(data) {
+      $('.ajax-processing').addClass('hidden');
+      if (!data['success']) {
+        // OCR failed.
+      }
+    });
+  }
+}
+
 function updateChargeAttachment(index) {
   let fullPath = $(vueChargeModal.$refs["attachment"+index]).val();
   vueChargeModal.form.filename[index] = fullPath.substring(fullPath.lastIndexOf('\\')+1);
-  $(vueChargeModal.$refs["file_display"+index]).html(vueChargeModal.form.filename[index]);
+  vueChargeModal.$forceUpdate();
 }
 
 function addNewChargeLine() {
@@ -81,6 +119,7 @@ function executeDownloadableHandler(url) {
 
 function populateChargeModalWithAjaxResult(result) {
   // populate modal
+  vueChargeModal.modal.ocr = vueChargeDataSource.bool_ocr;
   vueChargeModal.modal.readonly = result['readonly'];
   vueChargeModal.modal.history = result['history'];
   vueChargeModal.modal.title = result['title'];
@@ -488,6 +527,7 @@ $(document).ready(function() {
     el : "#embeddedChargeModal",
     data : {
       modal : {
+        ocr: false,
         readonly : false,
         history : [],
         csrf : '',

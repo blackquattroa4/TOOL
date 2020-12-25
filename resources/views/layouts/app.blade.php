@@ -51,15 +51,15 @@
 @endif
 
 @if (!App::environment('local'))
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap.min.css">
 @else
-	<link rel="stylesheet" href="{{ asset('external/datatables/1.10.20/css/dataTables.bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('external/datatables/1.10.23/css/dataTables.bootstrap.min.css') }}">
 @endif
 
 @if (!App::environment('local'))
-	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css">
 @else
-	<link rel="stylesheet" href="{{ asset('external/datatable-buttons/1.6.2/css/buttons.dataTables.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('external/datatable-buttons/1.6.4/css/buttons.dataTables.min.css') }}">
 @endif
 
 	<style>
@@ -344,21 +344,21 @@
 @endif
 
 @if (!App::environment('local'))
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 @else
-	<script type="text/javascript" src="{{ asset('external/datatables/1.10.20/js/jquery.dataTables.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('external/datatables/1.10.23/js/jquery.dataTables.min.js') }}"></script>
 @endif
 
 @if (!App::environment('local'))
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap.min.js"></script>
 @else
-	<script type="text/javascript" src="{{ asset('external/datatables/1.10.20/js/dataTables.bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('external/datatables/1.10.23/js/dataTables.bootstrap.min.js') }}"></script>
 @endif
 
 @if (!App::environment('local'))
-	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
 @else
-	<script type="text/javascript" src="{{ asset('external/datatable-buttons/1.6.2/js/dataTables.buttons.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('external/datatable-buttons/1.6.4/js/dataTables.buttons.min.js') }}"></script>
 @endif
 
 @if (!App::environment('local'))

@@ -146,6 +146,8 @@ return [
 	'Search closed warehouse order' => 'Search closed warehouse order',
 	'Search current investment' => 'Search current investment',
 	'Search past investment' => 'Search past investment',
+	'OCR enabled' => 'OCR enabled',
+	'OCR disabled' => 'OCR disabled',
 ];
 
 ?>

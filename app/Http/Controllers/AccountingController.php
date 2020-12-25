@@ -54,6 +54,10 @@ class AccountingController extends Controller
 			'inventory-table' => auth()->user()->can('wo-list'),
 			'taccount-table' => auth()->user()->can('acct-list'),
 
+			// other actions
+			'customer-upsert' => auth()->user()->can(['customer-create', 'customer-edit']),
+			'supplier-upsert' => auth()->user()->can(['supplier-create', 'supplier-edit']),
+
 			'inventory-report' => auth()->user()->can(['wo-list', 'wo-view'], true),
 
 			'adjust-inventory-button' => auth()->user()->can(['ex-create', 'ar-create'], true),
@@ -63,7 +67,7 @@ class AccountingController extends Controller
 		];
 
 		$level2Switch = [
-			'receivable-window' => $switch['sales-process-modal'] || $swtich['receivable-table'],
+			'receivable-window' => $switch['sales-process-modal'] || $switch['receivable-table'],
 			'customer-window' => $switch['create-customer-button'] || $switch['customer-table'],
 			'payable-window' => $switch['purchase-process-modal'] || $switch['payable-table'],
 			'supplier-window' => $switch['create-supplier-button'] || $switch['supplier-table'],
@@ -73,7 +77,7 @@ class AccountingController extends Controller
 			'report-window' => $switch['inventory-report'],
 			'tool-window' => $switch['adjust-inventory-button'] || $switch['create-expense-button'],
 
-			'entity-template' => $switch['customer-table'] || $switch['upsert-customer'] || $switch['supplier-table'] || $switch['supplier-upsert'],
+			'entity-template' => $switch['customer-table'] || $switch['customer-upsert'] || $switch['supplier-table'] || $switch['supplier-upsert'],
 			'transactable-template' => $switch['receivable-table'] || $switch['sales-process-modal'] || $switch['payable-table'] || $switch['purchase-process-modal'],
 			'expense-template' => $switch['expense-table'] || $switch['expense-upsert'],
 			'inventory-entry-template' => $switch['inventory-table'],

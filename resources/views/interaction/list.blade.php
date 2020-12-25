@@ -95,7 +95,7 @@
 			<td class="text-right" data-order="{create_date}">{create_date_display}</td>
 			<td class="text-right" data-order="{update_date}">{update_date_display}</td>
 			<td>{search-key}</td>
-			<td>
+			<td style="width:28px">
 				<button class='btn btn-info btn-xs' title="{{ trans('forms.View') . "/" . trans('forms.Edit') }}" onclick="accessInteractionInModal({id})"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 			</td>
 		</tr>

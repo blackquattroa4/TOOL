@@ -146,6 +146,8 @@ return [
 	'Search closed warehouse order' => '搜索已结未结仓库工单',
 	'Search current investment' => '搜索当前投资',
 	'Search past investment' => '搜索过去投资',
+	'OCR enabled' => '光学字符识别已启用',
+	'OCR disabled' => '光学字符识别已停用',
 ];
 
 ?>

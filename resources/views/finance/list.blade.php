@@ -681,7 +681,7 @@
 			<td>{region}</td>
 			<td class="text-right">{outstanding_transactable}</td>
 			<td>{search-key}</td>
-			<td>
+			<td style="width:110px">
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewTaxableEntityInModal({id})">
 					<i class="fa fa-eye" aria-hidden="true"></i>
 				</button>
@@ -720,7 +720,7 @@
 			<td data-condition="{is_pastdue}" class="text-right text-danger">{balance}</td>
 			<td data-condition="!{is_pastdue}" class="text-right">{balance}</td>
 			<td>{search-key}</td>
-			<td>
+			<td style="width:55px">
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewTransactableEntryInModal({id})"><i class="fa fa-eye" aria-hidden="true"></i></button>
 				<button data-condition="{can_void}" class='btn btn-info btn-xs' title="{{ trans('forms.Void') }}" onclick="voidTransactableEntryInModal({id})"><i class="fa fa-ban" aria-hidden="true"></i></button>
 			</td>
@@ -740,7 +740,7 @@
 			<td class="text-right">{total}</td>
 			<td>{status}</td>
 			<td>{search-key}</td>
-			<td>
+			<td style="width:82px">
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewChargeEntryInModal({id})"><i class="fa fa-eye" aria-hidden="true"></i></button>
 				<button data-condition="{can_submit}" class='btn btn-info btn-xs' title="{{ trans('forms.Submit') }}" onclick="submitChargeEntryInModal({id})"><i class="fa fa-file-text" aria-hidden="true"></i></button>
 				<button data-condition="{can_retract}" class='btn btn-info btn-xs' title="{{ trans('forms.Retract') }}" onclick="retractChargeEntryInModal({id})"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -760,7 +760,7 @@
 			<td>{frequency_display}</td>
 			<td data-condition="{pastdue}" data-order="{upcoming}" class="text-danger" >{upcoming_display}</td>
 			<td data-condition="!{pastdue}" data-order="{upcoming}"  >{upcoming_display}</td>
-			<td>
+			<td style="width:28px">
 				<button data-condition="{can_create}" class='btn btn-info btn-xs' title="{{ trans('forms.Record') }}" onclick="createChargeEntryFromRecurringInModal({id})">
 					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 				</button>
@@ -777,7 +777,7 @@
 			<td style="text-align:right;">{balance}</td>
 			<td id="bank-account-{id}-debit" style="text-align:right;">{debit}</td>
 			<td id="bank-account-{id}-credit" style="text-align:right;">{credit}</td>
-			<td>
+			<td style="width:82px">
 				<button data-condition="{can_view}" id="bank-account-{id}-view" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewTaccountTransactionInModal({id}, '{description}', '{currency}')"><i class="fa fa-eye" aria-hidden="true"></i></button>
 				<button data-condition="{can_reconcile}" id="bank-account-{id}-reconcile" class='btn btn-info btn-xs' title="{{ trans('forms.Reconcile') }}" onclick="processTaccountReconciliationInModal({id})"><i class="fa fa-link" aria-hidden="true"></i></button>
 				<button data-condition="{can_ar_process}" class='btn btn-info btn-xs' title="{{ trans('finance.Record interest/dividend') }}" onclick="openDividendIncomeModal({id})"><i class="fa fa-gift" aria-hidden="true"></i></button>
@@ -799,7 +799,7 @@
 			<td style="text-align:right;">{apr}</td>
 			<td id="loan-balance-{id}" name="loan-balance-{id}" style="text-align:right;">{balance}</td>
 			<td>{search-key}</td>
-			<td>
+			<td style="width:110px">
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewLoanInModal({id})"><i class="fa fa-eye" aria-hidden="true"></i></button>
 				<button data-condition="{can_edit}" class='btn btn-info btn-xs' title="{{ trans('forms.Update') }}" onclick="updateLoanInModal({id})"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
 				<button data-condition="{can_process} &amp;&amp; ('{role}' == 'lender')" class='btn btn-info btn-xs' title="{{ trans('finance.Record interest') }}" onclick="openLoanInterestModal({id}, true)"><i class="fa fa-money" aria-hidden="true"></i></button>
@@ -1259,6 +1259,8 @@
 		}
 
 		$(document).ready(function() {
+			// boolean of OCR
+			vueChargeDataSource.bool_ocr = "{{ \App\Helpers\ParameterHelper::getValue("charge_ocr") ?? false }}";
 			// text of date of today
 			vueChargeDataSource.text_today = "{{ \App\Helpers\DateHelper::dbToGuiDate(date("Y-m-d")) }}";
 			// default taxable entity id

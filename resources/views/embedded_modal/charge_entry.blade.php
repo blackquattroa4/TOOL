@@ -22,52 +22,7 @@
 		</div>
 	</div>
 
-	<div class="image-group">
-		<div class="image-container">
-			<img id="image-canvas" class="img hide" data-url="" />
-		</div>
-		<div id="downloadableAttachmentModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="downloadableAttachmentModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="false">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button aria-label="Close" class="close" type="button" onclick="$(this).closest('#downloadableAttachmentModal').modal('hide')">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title">{{ trans('forms.Attachment') }}</h4>
-					</div>
-					<div style="min-height: 350px;max-height: 500px;" class="modal-body">
-						<div id="img-preview">
-						</div>
-						<!--
-						<div class="img-op">
-							<span class="btn btn-primary zoom-in">
-								<i class="fa fa-search-plus"></i>
-							</span>
-							<span class="btn btn-primary zoom-out">
-								<i class="fa fa-search-minus"></i>
-							</span>
-							<span class="btn btn-primary rotate">Rotate</span>
-							<br>
-							<span role="prev" class="btn btn-primary switch">Prev</span>
-							<span role="next" class="btn btn-primary switch">Next</span>
-						</div>
-						-->
-					</div>
-					<div class="modal-footer">
-						<div class="img-op">
-							<button type="button" class="btn btn-primary zoom-in">
-								<i class="fa fa-search-plus"></i>
-							</button>
-							<button type="button" class="btn btn-primary zoom-out">
-								<i class="fa fa-search-minus"></i>
-							</button>
-							<button class="btn btn-default pull-right" type="button" onclick="$(this).closest('#downloadableAttachmentModal').modal('hide')">{{ trans('forms.Close') }}</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	@include("embedded_modal.image_viewer", [ 'embedded_image_viewer_modal_title' => trans('forms.Attachment') ])
 
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
@@ -77,6 +32,8 @@
 						<td>
 							<font size="4" style="padding-right:30px;">@{{ modal.title }}</font>
 							<a v-if="modal.history && (modal.history.length > 0)" style="padding-right:20px;" href="#" data-toggle="modal" data-target="#embeddedChargeModal #historyModal"><span class="fa fa-2x fa-history"></span></a>
+							<a v-if="!modal.readonly && modal.ocr" style="padding-right:20px;" v-on:click="modal.ocr=false" title="{{ trans("tool.OCR enabled")}}"><span class="fa fa-2x fa-eye" aria-hidden="true"></span></a>
+							<a v-if="!modal.readonly && !modal.ocr" style="padding-right:20px;" v-on:click="modal.ocr=true" title="{{ trans("tool.OCR disabled")}}"><span class="fa fa-2x fa-eye-slash" aria-hidden="true"></span></a>
 							<span v-if="'general' in errors" v-bind:class="{ 'text-danger' : 'general' in errors }" >
 								<strong>@{{ errors['general'][0] }}</strong>
 							</span>
@@ -227,8 +184,8 @@
 							<button v-if="modal.readonly" type="button" class="btn btn-info image-button" v-bind:title="form.filename[index]" v-bind:data-url="form.fileurl[index]" v-html="form.filename[index]"></button>
 							<label v-if="!modal.readonly" class="btn" v-bind:class="{ 'btn-danger' : 'upload-selector.'+index in errors, 'btn-info' : !('upload-selector.'+index in errors) }" v-bind:for="'upload-selector['+index+']'">
 								<!-- assuming value='C:\fakepath\filename' -->
-								<input v-bind:id="'upload-selector['+index+']'" v-bind:name="'upload-selector['+index+']'" type="file" style="display:none;" v-bind:ref="'attachment'+index" v-on:change="updateChargeAttachment(index);" />
-								<span id="upload-selector-label[]" v-bind:title="form.filename[index]" v-bind:key="form.filename[index]" v-bind:ref="'file_display'+index">{{ trans('tool.Upload file') }}</span>
+								<input v-bind:id="'upload-selector['+index+']'" v-bind:name="'upload-selector['+index+']'" type="file" style="display:none;" v-bind:ref="'attachment'+index" v-on:change="updateChargeAttachment(index); recognizeUpload(index);" />
+								<span id="upload-selector-label[]" v-bind:title="form.filename[index]" v-bind:key="form.filename[index]" v-bind:ref="'file_display'+index">@{{ form.filename[index] }}</span>
 							</label>
 							<span v-if="'upload-selector.'+index in errors" class="help-block">
 								<strong>@{{ errors['upload-selector.'+index][0] }}</strong>

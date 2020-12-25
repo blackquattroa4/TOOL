@@ -41,20 +41,20 @@
 							<td>
 						@if(!empty($user->roles))
 							@foreach($user->roles as $v)
-								<label class="label label-success">{{ $v->display_name }}</label>
+								<label style="margin-right:3px;" class="label label-success">{{ $v->display_name }}</label>
 							@endforeach
 						@endif
 							</td>
-							<td>
+							<td style="width:70px">
 							@if (Auth::user()->can('user-view'))
-								<a class="btn btn-info btn-xs" onclick="viewUserInModal({{ $user->id }})" title="{{ trans('forms.Show') }}">
-									<span class="fa fa-eye"></span>
-								</a>
+								<button class="btn btn-info btn-xs" onclick="viewUserInModal({{ $user->id }})" title="{{ trans('forms.Show') }}">
+									<i class="fa fa-eye" aria-hidden="true"></i>
+								</button>
 							@endif
 							@if (Auth::user()->can('user-edit'))
-								<a class="btn btn-info btn-xs" onclick="updateUserInModal({{ $user->id }})" title="{{ trans('forms.Edit') }}">
-									<span class="fa fa-pencil-square-o"></span>
-								</a>
+								<button class="btn btn-info btn-xs" onclick="updateUserInModal({{ $user->id }})" title="{{ trans('forms.Edit') }}">
+									<i class="fa fa-pencil-square-o"></i>
+								</button>
 							@endif
 							</td>
 						</tr>

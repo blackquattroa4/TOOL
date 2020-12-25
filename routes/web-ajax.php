@@ -437,6 +437,9 @@ Route::group(['domain' => env('COMPANY_DOMAIN')], function() {
 					Route::post('ajax', ['uses' => 'ChargeController@processPostAjax', 'middleware' => ['permission:ex-process']]);
 				});
 			});
+			Route::group(['prefix' => 'recognize'], function() {
+				Route::post('ajax', ['uses' => 'OpticalCharacterRecognitionController@recognizeExpenseAjax', 'middleware' => ['permission:ex-create']]);
+			});
 		});
 
 		// staff expense related web-ajax

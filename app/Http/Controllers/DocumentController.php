@@ -40,7 +40,7 @@ class DocumentController extends Controller
 	public function getDashboardDocumentAjax(Request $request)
 	{
 		// select document which is valid and accessible to user
-		$documents = Document::where('valid', 1)->havingRaw("(select count(1)>0 from document_permission where original_document_id=documents.original_version and permission_read = 1 and ((accessor_type='users' and accessor_id=" . auth()->user()->id . ") or (accessor_type='roles' and accessor_id in (select role_id from role_user where user_id = " . auth()->user()->id . "))))")->get();
+		$documents = Document::where('valid', 1)->whereRaw("(select count(1)>0 from document_permission where original_document_id=documents.original_version and permission_read = 1 and ((accessor_type='users' and accessor_id=" . auth()->user()->id . ") or (accessor_type='roles' and accessor_id in (select role_id from role_user where user_id = " . auth()->user()->id . "))))")->get();
 
 		return response()->json([ 'success' => true, 'data' => DocumentResource::collection($documents) ]);
 	}

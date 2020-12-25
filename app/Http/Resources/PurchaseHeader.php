@@ -43,7 +43,7 @@ class PurchaseHeader extends Resource
       'delivery_date_display' => DateHelper::dbToGuiDate($details->min('delivery_date')),
       'items' => $details->count(),
       'staff' => $this->staff->name,
-      'balance' => $fmtr->format($details->sum(function ($item) { return ($item->ordered_quantity - $item->shipped_quantity) * $item->unit_price - $item->shipped_amount; })),
+      'balance' => $fmtr->format($details->sum(function ($item) { return ($item->ordered_quantity * $item->unit_price) - $item->shipped_amount; })),
       'percent' => sprintf("%0.1f", ($details->sum('ordered_quantity') ? $details->sum('shipped_quantity') * 100 / $details->sum('ordered_quantity') : 0)) . '%',
       'search-key' => implode(" ", $this->generateSearchAttribute()),
       'can_view' => $user->can(self::TYPE_TO_INITIAL[$this->type].'-view'),

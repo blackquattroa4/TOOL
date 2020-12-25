@@ -70,8 +70,10 @@
 		<tr id="parameter-{id}">
 			<td>{key}</td>
 			<td>{value}</td>
-			<td>
-				<a data-condition="{can_edit}" class="btn btn-primary" onclick="updateParameterInModal({id})">{{ trans('forms.Update') }}</a>
+			<td style="width:30px;">
+				<button data-condition="{can_edit}" class="btn btn-info btn-xs" onclick="updateParameterInModal({id})" title="{{ trans('forms.Update') }}">
+					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+				</button>
 			</td>
 		</tr>
 	</script>

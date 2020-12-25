@@ -272,7 +272,7 @@
 			<td title="{from_email}">
 				{from_name}
 			</td>
-			<td>
+			<td style="width:110px">
 				<button class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" data-toggle="modal" data-target="#emailReaderModal" onclick="ajaxGetMailContent({id});" ><i class="fa fa-eye" aria-hidden="true"></i></button>
 				<button class='btn btn-info btn-xs' title="{{ trans('email.Reply') }}" onclick="ajaxPrepareCorrespondence('reply', {id});"><i class="fa fa-reply" aria-hidden="true"></i></button>
 				<button class='btn btn-info btn-xs' title="{{ trans('email.Forward') }}" onclick="ajaxPrepareCorrespondence('forward', {id});"><i class="fa fa-share" aria-hidden="true"></i></button>

@@ -143,7 +143,7 @@
 			<td>{phone}</td>
 			<td>{email}</td>
 			<td>{search-key}</td>
-			<td>
+			<td style="width:82px">
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewStaffInModal({id});"><i class="fa fa-eye" aria-hidden="true"></i></button>
 				<button data-condition="{can_edit}" class='btn btn-info btn-xs' title="{{ trans('forms.Update') }}" onclick="updateStaffInModal({id});"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
 				<button data-condition="{can_edit}" class='btn btn-info btn-xs' title="{{ trans('forms.Archive') }}" onclick="openUploadModal({id})"><i class="fa fa-files-o" aria-hidden="true"></i></button>

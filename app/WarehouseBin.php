@@ -135,8 +135,6 @@ class WarehouseBin extends Model
         ];
       })->toArray();
 
-      // :TODO: right now we are using FIFO, consider other inventory-method (LIFO, Average)
-
       foreach ($incomingBatches as $key => $batch) {
         if (array_key_exists($batch['tradable_id'], $outgoingQuantities)) {
           if ($batch['balance'] >= $outgoingQuantities[$batch['tradable_id']]) {

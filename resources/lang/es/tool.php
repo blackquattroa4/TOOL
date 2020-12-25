@@ -146,6 +146,8 @@ return [
 	'Search closed warehouse order' => 'Buscar orden de almacén cerrado',
 	'Search current investment' => 'Buscar inversión actual',
 	'Search past investment' => 'Buscar inversión actual',
+	'OCR enabled' => 'LOC habilitada',
+	'OCR disabled' => 'LOC discapacitada',
 ];
 
 ?>

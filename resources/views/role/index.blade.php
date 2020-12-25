@@ -37,14 +37,14 @@
 						<tr id="role-{{ $role->id }}">
 							<td>{{ $role->display_name }}</td>
 							<td>{{ $role->description }}</td>
-							<td>
-								<a class="btn btn-info btn-xs" onclick="viewRoleInModal({{ $role->id }})" title="{{ trans('forms.Show') }}">
-									<span class="fa fa-eye"></span>
-								</a>
+							<td style="width:70px">
+								<button class="btn btn-info btn-xs" onclick="viewRoleInModal({{ $role->id }})" title="{{ trans('forms.Show') }}">
+									<i class="fa fa-eye" aria-hidden="true"></i>
+								</button>
 							@permission('role-edit')
-								<a class="btn btn-info btn-xs" onclick="updateRoleInModal({{ $role->id }})" title="{{ trans('forms.Edit') }}">
-									<span class="fa fa-pencil-square-o"></span>
-								</a>
+								<button class="btn btn-info btn-xs" onclick="updateRoleInModal({{ $role->id }})" title="{{ trans('forms.Edit') }}">
+									<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+								</button>
 							@endpermission
 							</td>
 						</tr>

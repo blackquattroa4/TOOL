@@ -641,7 +641,7 @@ Route::group(['domain' => env('SUPPLIER_DOMAIN'), 'namespace' => 'Supplier', 'as
 
 	Route::auth();
 
-	Route::match(['get', 'post'], 'register', function() { return redirect('login'); });
+	Route::match(['get', 'post'], 'register', [ 'uses' => 'UserController@register' ]);
 
 	Route::get('home', 'HomeController@index');
 
@@ -692,7 +692,7 @@ Route::group(['domain' => env('CUSTOMER_DOMAIN'), 'namespace' => 'Customer', 'as
 
 	Route::auth();
 
-	Route::match(['get', 'post'], 'register', function() { return redirect('login'); });
+	Route::match(['get', 'post'], 'register', [ 'uses' => 'UserController@register' ]);
 
 	Route::get('home', 'HomeController@index');
 
@@ -734,7 +734,7 @@ Route::group(['domain' => env('TENANT_DOMAIN'), 'namespace' => 'Tenant', 'as' =>
 
 	Route::auth();
 
-	Route::match(['get', 'post'], 'register', function() { return redirect('login'); });
+	Route::match(['get', 'post'], 'register', [ 'uses' => 'UserController@register' ]);
 
 	Route::get('home', 'HomeController@index');
 

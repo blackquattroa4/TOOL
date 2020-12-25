@@ -23,6 +23,7 @@ class Kernel extends ConsoleKernel
         Commands\PusherNotification::class,
         Commands\EcommerceSync::class,
         Commands\CalculateLoanInterest::class,
+        Commands\CleanStorage::class
     ];
 
     /**
@@ -47,6 +48,12 @@ class Kernel extends ConsoleKernel
         $schedule->command('investment:update')
                   ->timezone('America/Los_Angeles')
                   ->cron('45 23 * * 1-5')
+                  ->withoutOverlapping()
+                  ->onOneServer();
+
+        $schedule->command('storage:declutter 6')
+                  ->timezone('America/Los_Angeles')
+                  ->cron('30 * * * 1-5')
                   ->withoutOverlapping()
                   ->onOneServer();
     }

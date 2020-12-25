@@ -580,7 +580,7 @@
 			<td>{region}</td>
 			<td class="text-right">{outstanding_transactable}</td>
 			<td>{search-key}</td>
-			<td>
+			<td style="width:110px">
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewTaxableEntityInModal({id})">
 					<i class="fa fa-eye" aria-hidden="true"></i>
 				</button>
@@ -619,7 +619,7 @@
 			<td data-condition="{is_pastdue}" class="text-right text-danger">{balance}</td>
 			<td data-condition="!{is_pastdue}" class="text-right">{balance}</td>
 			<td>{search-key}</td>
-			<td>
+			<td style="width:55px">
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewTransactableEntryInModal({id})"><i class="fa fa-eye" aria-hidden="true"></i></button>
 				<button data-condition="{can_void}" class='btn btn-info btn-xs' title="{{ trans('forms.Void') }}" onclick="voidTransactableEntryInModal({id})"><i class="fa fa-ban" aria-hidden="true"></i></button>
 			</td>
@@ -639,7 +639,7 @@
 			<td class="text-right">{total}</td>
 			<td>{status}</td>
 			<td>{search-key}</td>
-			<td>
+			<td style="width:82px">
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewChargeEntryInModal({id})"><i class="fa fa-eye" aria-hidden="true"></i></button>
 				<button data-condition="{can_submit}" class='btn btn-info btn-xs' title="{{ trans('forms.Submit') }}" onclick="submitChargeEntryInModal({id})"><i class="fa fa-file-text" aria-hidden="true"></i></button>
 				<button data-condition="{can_retract}" class='btn btn-info btn-xs' title="{{ trans('forms.Retract') }}" onclick="retractChargeEntryInModal({id})"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -656,7 +656,7 @@
 			<td>{sku}</td>
 			<td>{entity}</td>
 			<td class="text-right">{balance}</td>
-			<td data-condition="{can_view}">
+			<td  style="width:28px" data-condition="{can_view}">
 				<button class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewTradableTransactionsInModal({location_id}, {entity_id}, {sku_id})"><i class="fa fa-eye" aria-hidden="true"></i></button>
 			</td>
 		</tr>
@@ -673,7 +673,7 @@
 			<td>{type}</td>
 			<td>{currency}</td>
 			<td>{description}</td>
-			<td>
+			<td style="width:55px">
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewTaccountTransactionInModal({id}, '{description}', '{currency}')"><i class="fa fa-eye" aria-hidden="true"></i></button>
 				<button data-condition="{can_edit}" class='btn btn-info btn-xs' title="{{ trans('forms.Edit') }}" onclick="updateTaccountFormInModal({id})"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
 			</td>
@@ -1068,6 +1068,8 @@
 		}
 
 		$(document).ready(function() {
+			// boolean of OCR
+			vueChargeDataSource.bool_ocr = "{{ \App\Helpers\ParameterHelper::getValue("charge_ocr") ?? false }}";
 			// text of date of today
 			vueChargeDataSource.text_today = "{{ \App\Helpers\DateHelper::dbToGuiDate(date("Y-m-d")) }}";
 			// default taxable entity id

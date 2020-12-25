@@ -287,7 +287,7 @@
 			<td title="{description}" style="width:25%;text-overflow:ellipsis;">{description}</td>
 			<td>{supplier}</td>
 			<td>{search-key}</td>
-			<td>
+			<td style="width:82px">
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewTradableInModal({id})"><i class="fa fa-eye" aria-hidden="true"></i></button>
 				<button data-condition="{can_edit}" class='btn btn-info btn-xs' title="{{ trans('forms.Edit') }}" onclick="updateTradableInModal({id})"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('product.Analysis') }}" onclick="analyzeTradableInModal({id})"><i class="fa fa-pie-chart" aria-hidden="true"></i></button>
@@ -306,7 +306,7 @@
 				{skus}
 			</td>
 			<td>{search-key}</td>
-			<td>
+			<td style="width:55px">
 					<a data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewDocumentInModal({document_id})"><i class="fa fa-eye" aria-hidden="true"></i></a>
 					<a data-condition="{can_edit}" class='btn btn-info btn-xs' title="{{ trans('forms.Update') }}" onclick="updateTradableNoticeInModal({id})"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 			</td>
@@ -324,7 +324,7 @@
 				{skus}
 			</td>
 			<td>{search-key}</td>
-			<td>
+			<td style="width:55px">
 				<a data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewDocumentInModal({document_id})"><i class="fa fa-eye" aria-hidden="true"></i></a>
 				<a data-condition="{can_edit}" class='btn btn-info btn-xs' title="{{ trans('forms.Update') }}" onclick="updateTradableFaqInModal({id})"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 			</td>

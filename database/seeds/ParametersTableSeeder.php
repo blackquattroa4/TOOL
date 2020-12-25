@@ -12,18 +12,6 @@ class ParametersTableSeeder extends Seeder
 	public function run()
 	{
 		DB::table('parameters')->insertGetId([
-			'key' => 'rma_number',
-			'value' => serialize('800300'),
-			'created_at' => date('Y-m-d H:i:s'),
-			'updated_at' => date('Y-m-d H:i:s'),
-		]);
-		DB::table('parameters')->insertGetId([
-			'key' => 'rma_staff_email',
-			'value' => serialize(array('someone@someplace.com')),
-			'created_at' => date('Y-m-d H:i:s'),
-			'updated_at' => date('Y-m-d H:i:s'),
-		]);
-		DB::table('parameters')->insertGetId([
 			'key' => 'sales_order_number',
 			'value' => serialize('200000'),
 			'created_at' => date('Y-m-d H:i:s'),
@@ -89,6 +77,12 @@ class ParametersTableSeeder extends Seeder
 		DB::table('parameters')->insertGetId([
 			'key' => 'credit_card_t_account_ids',
 			'value' => serialize(array()),
+			'created_at' => date('Y-m-d H:i:s'),
+			'updated_at' => date('Y-m-d H:i:s'),
+		]);
+		DB::table('parameters')->insertGetId([
+			'key' => 'charge_ocr',
+			'value' => serialize(false),
 			'created_at' => date('Y-m-d H:i:s'),
 			'updated_at' => date('Y-m-d H:i:s'),
 		]);

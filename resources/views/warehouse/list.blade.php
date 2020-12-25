@@ -319,7 +319,7 @@
 			<td data-order="{delivery_date}">{delivery_date_display}</td>
 			<td style="text-align:right;">{items}</td>
 			<td>{search-key}</td>
-			<td>
+			<td style="width:82px">
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' onclick="viewWarehouseOrderInModal({id})" title="{{ trans('forms.View') }}"><i class="fa fa-eye" aria-hidden="true"></i></button>
 				<button data-condition="{is_open} &amp;&amp; !{is_prepared} &amp;&amp; {can_edit}" class='btn btn-info btn-xs' onclick="processWarehouseOrderInModal({id})" title="{{ trans('forms.Process') }}"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
 				<button data-condition="{can_void}" class='btn btn-info btn-xs' onclick="voidWarehouseOrderInModal({id})" title="{{ trans('forms.Void') }}"><i class="fa fa-ban" aria-hidden="true"></i></button>
@@ -334,7 +334,7 @@
 			<td>{location}</td>
 			<td>{sku}</td>
 			<td title="{{ trans('warehouse.Available at') }} {bins_string}" class="text-right">{balance}</td>
-			<td>
+			<td style="width:28px">
 				<button data-condition="{can_view}" class='btn btn-info btn-xs' title="{{ trans('forms.View') }}" onclick="viewWarehouseTransactionInModal({location_id}, {sku_id})"><i class="fa fa-eye" aria-hidden="true"></i></button>
 			</td>
 		</tr>

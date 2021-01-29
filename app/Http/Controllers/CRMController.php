@@ -54,6 +54,7 @@ class CRMController extends Controller
 			'create-return-button' => auth()->user()->can('sr-create'),
 			'create-charge-button' => auth()->user()->can('ex-create'),
 			'create-rma-button' => auth()->user()->can('rma-create'),
+			'create-picking-button' => auth()->user()->can('wo-create'),
 			'data-export-button' => auth()->user()->can(['so-list', 'sr-list'], true),
 			'sales-restriction-button' => auth()->user()->can(['so-list', 'so-create', 'so-edit', 'so-view'], true),
 		];

@@ -37,7 +37,7 @@
 						<tr id="role-{{ $role->id }}">
 							<td>{{ $role->display_name }}</td>
 							<td>{{ $role->description }}</td>
-							<td style="width:70px">
+							<td style="width:76px">
 								<button class="btn btn-info btn-xs" onclick="viewRoleInModal({{ $role->id }})" title="{{ trans('forms.Show') }}">
 									<i class="fa fa-eye" aria-hidden="true"></i>
 								</button>
@@ -88,7 +88,7 @@
 				$('table#roletable tr#role-' + role.id).append('<td>' + role.display + '</td>');
 				$('table#roletable tr#role-' + role.id).append('<td>' + role.description + '</td>');
 				$('table#roletable tr#role-' + role.id).append('<td>' + (role.can_view ? ("<a class=\"btn btn-info btn-xs\" onclick=\"viewRoleInModal(" + role.id + ")\" title=\"{{ trans('forms.Show') }}\"><span class=\"fa fa-eye\"></span></a>&nbsp;") : "") + (role.can_edit ? ("<a class=\"btn btn-info btn-xs\" onclick=\"updateRoleInModal(" + role.id + ")\" title=\"{{ trans('forms.Show') }}\"><span class=\"fa fa-pencil-square-o\"></span></a>&nbsp;") : "") + '</td>');
-			}
+			};
 			//update callback
 			vueRoleFormDataSource.updateCallback = function(role) {
 				$('table#roletable tr#role-' + role.id + ' td:nth-child(1)').html(role.display);

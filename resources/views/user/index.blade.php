@@ -45,7 +45,7 @@
 							@endforeach
 						@endif
 							</td>
-							<td style="width:70px">
+							<td style="width:76px">
 							@if (Auth::user()->can('user-view'))
 								<button class="btn btn-info btn-xs" onclick="viewUserInModal({{ $user->id }})" title="{{ trans('forms.Show') }}">
 									<i class="fa fa-eye" aria-hidden="true"></i>
@@ -98,7 +98,7 @@
 				$('table#usertable tr#user-' + user.id).append('<td>' + user.email + '</td>');
 				$('table#usertable tr#user-' + user.id).append('<td>' + user.roles.map(x => '<label class="label label-success">' + x + '</label>').join('&nbsp;') + '</td>');
 				$('table#usertable tr#user-' + user.id).append('<td>' + (user.can_view ? ("<a class=\"btn btn-info btn-xs\" onclick=\"viewUserInModal(" + user.id + ")\" title=\"{{ trans('forms.Show') }}\"><span class=\"fa fa-eye\"></span></a>&nbsp;") : "") + (user.can_edit ? ("<a class=\"btn btn-info btn-xs\" onclick=\"updateUserInModal(" + user.id + ")\" title=\"{{ trans('forms.Show') }}\"><span class=\"fa fa-pencil-square-o\"></span></a>&nbsp;") : "") + '</td>');
-			}
+			};
 			//update callback
 			vueUserFormDataSource.updateCallback = function(user) {
 				$('table#usertable tr#user-' + user.id + ' td:nth-child(1)').html(user.name);

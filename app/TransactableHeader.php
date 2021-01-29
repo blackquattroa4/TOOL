@@ -495,6 +495,9 @@ class TransactableHeader extends Model
 		if (substr($this->incur_date, 0, 4) == date("Y")) {
 			array_push($result, 'thisyear');
 		}
+		if (substr($this->incur_date, 0, 4) == date("Y", strtotime("-1 year"))) {
+			array_push($result, 'lastyear');
+		}
 		if (substr($this->incur_date, 0, 7) == date("Y-m")) {
 			array_push($result, 'thismonth');
 		}
@@ -514,6 +517,7 @@ class TransactableHeader extends Model
 				str_pad('invoice', 15) . trans('tool.Search invoice'),
 				str_pad('credit', 15) . trans('tool.Search credit'),
 				str_pad('thisyear', 15) . trans('tool.Search from this year'),
+				str_pad('lastyear', 15) . trans('tool.Search from last year'),
 				str_pad('thismonth', 15) . trans('tool.Search from this month'),
 				str_pad('lastmonth', 15) . trans('tool.Search from last month'),
 			]);

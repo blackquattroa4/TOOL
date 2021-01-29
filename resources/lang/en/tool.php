@@ -95,6 +95,7 @@ return [
 	'Search open expense' => 'Search open expense',
 	'Search expense paid' => 'Search expense paid',
 	'Search from this year' => 'Search from this year',
+	'Search from last year' => 'Search from last year',
 	'Search from this month' => 'Search from this month',
 	'Search from last month' => 'Search from last month',
 	'Search loan lent' => 'Search loan lent',

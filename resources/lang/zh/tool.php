@@ -95,6 +95,7 @@ return [
 	'Search open expense' => '搜索未付费用',
 	'Search expense paid' => '搜索已付费用',
 	'Search from this year' => '搜索今年数据',
+	'Search from last year' => '搜索去年数据',
 	'Search from this month' => '搜索本月数据',
 	'Search from last month' => '搜索前月数据',
 	'Search loan lent' => '搜索贷款',

@@ -39,7 +39,7 @@ class TransactableController extends Controller
           'increment' => $headerObj->title,
     			'show_discount' => in_array('show_discount', explode(',', $headerObj->flags)),
     			'entity' => $headerObj->entity_id,
-    			'incur_date' => DateHelper::dbToGuiDate($headerObj->incr_date),
+    			'incur_date' => DateHelper::dbToGuiDate($headerObj->incur_date),
     			'payment' => $headerObj->payment_term_id,
     			'due_date' => DateHelper::dbToGuiDate($headerObj->approx_due_date),
     			'source' => $headerObj->sourceText(),

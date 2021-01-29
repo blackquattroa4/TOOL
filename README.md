@@ -17,7 +17,7 @@ TOOL is hosted on internet, so whether you have just one office location or many
 
 ## Demo site
 
-[click here to demo site](https://demo.createmyorder.com)
+[click here to demo site](https://demo.snr-merchandise.com)
  - user: guest@guest.com
  - password: 123456
 

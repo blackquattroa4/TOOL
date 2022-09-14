@@ -11,8 +11,6 @@
 |
 */
 
-Route::group(['domain' => env('COMPANY_DOMAIN')], function() {
-
 	Route::group(['middleware' => ['auth.ajax']], function() {
 
 		// get company logo
@@ -632,85 +630,4 @@ Route::group(['domain' => env('COMPANY_DOMAIN')], function() {
 				Route::post('{id}', 'CommissionController@saveCommissionProfile');
 			});
 		});
-  });
-});
-
-Route::group(['domain' => env('SUPPLIER_DOMAIN'), 'namespace' => 'Supplier', 'as' => 'supplier.'], function() {
-
-	Route::group(['middleware' => ['auth'], 'name' => 'supplier.'], function() {
-
-		// get company logo
-		// Route::get('company-logo', ['uses' => 'LogoController@getLogo']);
-
-		Route::post('shipping/upload', ['uses' => 'OrderController@uploadAjax', 'middleware' => ['permission:vendor']]);
-
-		// -------------- Product related
-		Route::group(['prefix' => 'product'], function() {
-			Route::get('ajax', ['uses' => 'ProductController@getProductAjax', 'middleware' => ['permission:vendor']]);
-		});
-
-		Route::group(['prefix' => 'accounting'], function() {
-			Route::group(['prefix' => 'tradable'], function() {
-				Route::group(['prefix' => 'transactions'], function() {
-					Route::get('ajax', ['uses' => 'ProductController@transactionAjax', 'middleware' => ['permission:vendor']]);
-				});
-			});
-		});
-
-		Route::get('taccount/retrieve', ['uses' => 'TransactionController@retrieveAjax', 'middleware' => ['permission:vendor']]);
-
 	});
-});
-
-Route::group(['domain' => env('CUSTOMER_DOMAIN'), 'namespace' => 'Customer', 'as' => 'customer.'], function() {
-
-	Route::group(['middleware' => ['auth']], function() {
-
-		// get company logo
-		// Route::get('company-logo', ['uses' => 'LogoController@getLogo']);
-
-		Route::get('taccount/retrieve', ['uses' => 'TransactionController@retrieveAjax', 'middleware' => ['permission:client']]);
-
-	});
-});
-
-Route::group(['domain' => env('TENANT_DOMAIN'), 'namespace' => 'Tenant', 'as' => 'tenant.'], function() {
-
-	Route::group(['middleware' => ['auth']], function() {
-
-		// get company logo
-		// Route::get('company-logo', ['uses' => 'LogoController@getLogo']);
-
-		// -------------- Document related web-ajax
-		Route::group(['prefix' => 'document'], function() {
-			Route::get('ajax', ['uses' => 'DocumentController@getDocumentAjax', 'middleware' => ['permission:client']]);
-			Route::group(['prefix' => '{id}'], function() {
-				Route::get('ajax', ['uses' => 'DocumentController@view', 'middleware' => ['permission:client']]);
-			});
-		});
-
-		// -------------- Request related web-ajax
-		Route::group(['prefix' => 'interaction'], function() {
-			Route::get('ajax', ['uses' => 'RequestController@getDashboardInteractionAjax', 'middleware' => ['permission:client']]);
-			Route::post('create', ['uses' => 'RequestController@createRequestAjax']);
-			Route::post('update/{id}', ['uses' => 'RequestController@addInfoToRequestAjax']);
-			Route::group(['prefix' => '{id}'], function() {
-				Route::get('ajax', ['uses' => 'RequestController@loadInteractionAjax', 'middleware' => ['permission:client']]);
-			});
-		});
-
-		// -------------- file-download related web-ajax
-		Route::group(['prefix' => 'file'], function() {
-			Route::get('download/{hash}', ['uses' => 'FileController@download', 'middleware' => ['permission:client']]);
-		});
-
-		Route::get('taccount/retrieve', ['uses' => 'TransactionController@retrieveAjax', 'middleware' => ['permission:client']]);
-
-		Route::get('invoice/prepare-ach-transfer', ['uses' => 'InvoiceController@prepareAchTransferAjax', 'middleware' => ['permission:client']]);
-
-		Route::get('invoice/{transactable_id}/agreement', ['uses' => 'InvoiceController@getAchAgreementAjax', 'middleware' => ['permission:client']]);
-
-		Route::post('invoice/process-ach-tranfer', ['uses' => 'InvoiceController@processAchTransferAjax', 'middleware' => ['permission:client']]);
-
-	});
-});
